@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body style="background-image: url(bg.jpg)">
+    <h1>Очки <span class="points">0</span></h1>
+    <h1>Жуки <span class="bugs">0</span></h1>
+    <script type="text/javascript"> 
+      let points = 0;
+      let bugs = 0;
+        let func = function(){
+          let div = document.createElement('img');
+          document.body.appendChild(div);
+          div.src = "img.svg"
+          div.style.width = "100px"
+          div.style.height = "100px"
+          div.style.position = "absolute"
+          div.style.marginLeft = func1()
+          div.style.marginTop = func2()
+          bugs += 1;
+          document.querySelector(".bugs").innerHTML = bugs
+          div.onclick = function(){
+            div.style.display = "none"
+            points += 1
+            document.querySelector(".points").innerHTML = points
+            bugs -= 1;
+            document.querySelector(".bugs").innerHTML = bugs  
+          }
+        } 
+        
+        let check = function(){
+            if(bugs >= 15){
+              alert("Game Over")
+              clearInterval(intervalID1);
+              clearInterval(intervalID2);
+            }
+            
+          }
+        let func1 = function(){
+            return Math.round(Math.random()*1300) + "px"
+            
+          }
+        let func2 = function(){
+            return Math.round(Math.random()*500) + "px"
+            
+          }
+        
+        let intervalID1 = setInterval(check,100)
+        let intervalID2 = setInterval(func,1000)
+        
+    </script>
+  </body>
+</html>
